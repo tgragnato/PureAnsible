@@ -1,0 +1,54 @@
+---
+
+- name: Install sysctl.conf
+  copy:
+    src: sysctl.conf
+    dest: /etc/sysctl.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install dhcpd.conf
+  copy:
+    src: dhcpd.conf
+    dest: /etc/dhcpd.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install hostname.vether0
+  copy:
+    src: hostname.vether0
+    dest: /etc/hostname.vether0
+    owner: root
+    group: wheel
+    mode: 0640
+
+- name: Install hostname.bridge0
+  copy:
+    src: hostname.bridge0
+    dest: /etc/hostname.bridge0
+    owner: root
+    group: wheel
+    mode: 0640
+
+- name: Install hostname file for bridge members
+  copy:
+    src: hostname.lan
+    dest: /etc/hostname.{{item}}
+    owner: root
+    group: wheel
+    mode: 0640
+  with_items:
+    - em1
+    - em2
+    - em3
+    - fxp0
+
+- name: Install firewall configuration
+  copy:
+    src: pf.conf
+    dest: /etc/pf.conf
+    owner: root
+    group: wheel
+    mode: 0600

@@ -1,0 +1,7 @@
+---
+
+- name: Initialize the system
+  import_tasks: init.yml
+
+- name: Initialize the network
+  import_tasks: network.yml
