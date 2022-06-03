@@ -1,0 +1,49 @@
+---
+
+- name: Install unbound.conf
+  copy:
+    src: unbound.conf
+    dest: /var/unbound/etc/unbound.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install blacklist.conf
+  copy:
+    src: blacklist.conf
+    dest: /var/unbound/etc/blacklist.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install 2nd_level.conf
+  copy:
+    src: 2nd_level.conf
+    dest: /var/unbound/etc/2nd_level.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install countries.conf
+  copy:
+    src: countries.conf
+    dest: /var/unbound/etc/countries.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install torrc
+  copy:
+    src: torrc
+    dest: /etc/tor/torrc
+    owner: root
+    group: wheel
+    mode: 0644
+
+- name: Install ntpd.conf
+  copy:
+    src: ntpd.conf
+    dest: /etc/ntpd.conf
+    owner: root
+    group: wheel
+    mode: 0644

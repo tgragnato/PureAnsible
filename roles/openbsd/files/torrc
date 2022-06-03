@@ -1,0 +1,21 @@
+Log err syslog
+User _tor
+RunAsDaemon 1
+DataDirectory /var/tor
+
+SOCKSPort 172.16.33.1:9050
++SOCKSPort 127.0.0.1:9050
+TransPort 172.16.33.1:9040
+SOCKSPolicy accept 127.0.0.1/32, accept 172.16.33.0/24, reject *
+
+AvoidDiskWrites 1
+CountPrivateBandwidth 1
+
+CellStatistics 0
+PaddingStatistics 0
+DirReqStatistics 0
+EntryStatistics 0
+ExitPortStatistics 0
+ConnDirectionStatistics 0
+HiddenServiceStatistics 0
+ExtraInfoStatistics 0
