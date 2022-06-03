@@ -1,0 +1,41 @@
+---
+
+- name: Update /etc/installurl
+  lineinfile:
+    dest: /etc/installurl
+    line: "{{pkg_path}}"
+    state: present
+    create: True
+
+- name: Adjust timezone
+  file:
+    src: /usr/share/zoneinfo/{{timezone}}
+    dest: /etc/localtime
+    follow: no
+    owner: root
+    group: wheel
+    state: link
+    force: yes
+
+- name: Install firmwares
+  shell: fw_update -a
+
+- name: Install essential packages
+  openbsd_pkg:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - nano
+    - htop
+    - vnstat
+
+- name: Disable futile services
+  service:
+    name: "{{item}}"
+    state: stopped
+    enabled: no
+  with_items:
+    - resolvd
+    - slaacd
+    - smtpd
+    - sndiod
