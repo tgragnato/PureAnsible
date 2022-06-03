@@ -33,6 +33,13 @@
     group: wheel
     mode: 0644
 
+- name: Setting the DHCP daemon
+  service:
+    name: dhcpd
+    args: vether0
+    state: started
+    enabled: yes
+
 - name: Install hostname.vether0
   copy:
     src: hostname.vether0

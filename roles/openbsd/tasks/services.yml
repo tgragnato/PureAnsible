@@ -32,6 +32,17 @@
     group: wheel
     mode: 0644
 
+- name: Setting the unbound daemon
+  service:
+    name: unbound
+    state: started
+    enabled: yes
+
+- name: Install Tor
+  openbsd_pkg:
+    name: tor
+    state: present
+
 - name: Install torrc
   copy:
     src: torrc
@@ -40,6 +51,12 @@
     group: wheel
     mode: 0644
 
+- name: Setting the Tor daemon
+  service:
+    name: tor
+    state: started
+    enabled: yes
+
 - name: Install ntpd.conf
   copy:
     src: ntpd.conf
@@ -47,3 +64,9 @@
     owner: root
     group: wheel
     mode: 0644
+
+- name: Setting the NTP daemon
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
