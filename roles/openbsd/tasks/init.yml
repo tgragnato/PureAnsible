@@ -29,6 +29,12 @@
     - htop
     - vnstat
 
+- name: Setting the vnstat daemon
+  service:
+    name: vnstatd
+    state: started
+    enabled: yes
+
 - name: Disable futile services
   service:
     name: "{{item}}"
