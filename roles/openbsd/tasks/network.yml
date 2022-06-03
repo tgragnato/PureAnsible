@@ -1,12 +1,29 @@
 ---
 
-- name: Install sysctl.conf
-  copy:
-    src: sysctl.conf
-    dest: /etc/sysctl.conf
-    owner: root
-    group: wheel
-    mode: 0644
+- name: Setting net.inet.ip.portfirst
+  sysctl:
+    name: net.inet.ip.portfirst
+    value: 49152
+
+- name: Setting net.inet.ip.portlast
+  sysctl:
+    name: net.inet.ip.portlast
+    value: 65535
+
+- name: Setting net.inet.ip.forwarding
+  sysctl:
+    name: net.inet.ip.forwarding
+    value: 1
+
+- name: Setting net.inet.tcp.ackonpush
+  sysctl:
+    name: net.inet.tcp.ackonpush
+    value: 1
+
+- name: Setting net.inet.tcp.mssdflt
+  sysctl:
+    name: net.inet.tcp.mssdflt
+    value: 1440
 
 - name: Install dhcpd.conf
   copy:
