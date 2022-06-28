@@ -1,2 +1,6 @@
 [openbsd]
+PureCheckPoint1.tgragnato.it ansible_host=172.16.32.1 ansible_ssh_user=root
 PureCheckPoint2.tgragnato.it ansible_host=172.16.33.1 ansible_ssh_user=root
+
+[debian]
+PureMini.tgragnato.it ansible_host=100.114.163.58 ansible_ssh_user=root
