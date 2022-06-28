@@ -3,3 +3,7 @@
 - hosts: openbsd
   roles:
     - openbsd
+
+- hosts: debian
+  roles:
+    - debian
