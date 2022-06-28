@@ -1,0 +1,29 @@
+---
+
+- name: Symlink to /dev/null
+  file:
+    src: /dev/null
+    dest: "{{item}}"
+    state: link
+  with_items:
+    - /mnt
+    - /srv
+    - /opt
+    - /media
+    - /var/cache/private
+    - /var/lib/private
+    - /var/mail
+    - /var/opt
+    - /usr/local
+
+- name: Symlink to /dev/shm
+  file:
+    src: /dev/shm
+    dest: "{{item}}"
+    state: link
+  with_items:
+    - /tmp
+    - /var/cache/apt/archives
+    - /var/log
+    - /var/spool
+    - /var/tmp
