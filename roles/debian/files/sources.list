@@ -1,0 +1,4 @@
+deb tor+http://2s4yqjx5ul6okpp3f2gaunr2syex5jgbfpfvhxxbbjwnrsvbk5v3qbid.onion/debian bullseye main contrib non-free
+deb tor+http://2s4yqjx5ul6okpp3f2gaunr2syex5jgbfpfvhxxbbjwnrsvbk5v3qbid.onion/debian bullseye-updates main contrib non-free
+deb tor+http://5ajw6aqf3ep7sijnscdzw77t7xq4xjpsy335yb2wiwgouo7yfxtjlmid.onion/debian-security bullseye-security/updates main contrib non-free
+deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] tor+https://pkgs.tailscale.com/stable/debian bullseye main

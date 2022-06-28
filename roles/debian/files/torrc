@@ -1,0 +1,16 @@
+SocksPort 0.0.0.0:9050 
+SocksPolicy accept 127.0.0.0/8, accept 100.64.0.0/10, reject *
+Bridge 93.56.117.22:443 2A5DF4A0FDD52868E25F2C33BC232AFFD19B8BF3
+UseBridges 1
+
+AvoidDiskWrites 1
+CountPrivateBandwidth 1
+
+CellStatistics 0
+PaddingStatistics 0
+DirReqStatistics 0
+EntryStatistics 0
+ExitPortStatistics 0
+ConnDirectionStatistics 0
+HiddenServiceStatistics 0
+ExtraInfoStatistics 0

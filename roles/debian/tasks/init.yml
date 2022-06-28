@@ -1,0 +1,112 @@
+---
+
+- name: Install tor
+  apt:
+    name: tor
+    state: present
+
+- name: Configure tor
+  copy:
+    src: torrc
+    dest: /etc/tor/torrc
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart tor
+
+- name: Setting the Tor daemon
+  systemd:
+    name: tor@default
+    state: started
+    enabled: yes
+
+- name: Install tailscale-archive-keyring.gpg
+  copy:
+    src: tailscale-archive-keyring.gpg
+    dest: /usr/share/keyrings/tailscale-archive-keyring.gpg
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Set apt sources
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Delete /etc/apt/sources.list.d
+  file:
+    state: absent
+    path: /etc/apt/sources.list.d
+
+- name: Configure apt
+  copy:
+    src: 99custom
+    dest: /etc/apt/apt.conf.d/99custom
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update the apt cache
+  apt:
+    update_cache: yes
+
+- name: Install essential packages
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - amd64-microcode
+    - apparmor
+    - apt-transport-tor
+    - firmware-amd-graphics
+    - firmware-misc-nonfree
+    - hardening-runtime
+    - hostapd
+    - htop
+    - iproute2
+    - linux-image-amd64
+    - lsof
+    - mdadm
+    - nano
+    - openssh-server
+    - samba
+    - samba-vfs-modules
+    - tailscale
+    - tcpdump
+    - tor
+    - tor-geoipdb
+    - unbound
+    - vnstat
+
+- name: Disable futile services
+  systemd:
+    name: "{{item}}"
+    state: stopped
+    enabled: no
+    masked: yes
+  with_items:
+    - emergency.service
+    - getty-static.service
+    - getty@tty1.service
+    - getty@tty2.service
+    - getty@tty3.service
+    - getty@tty4.service
+    - getty@tty5.service
+    - getty@tty6.service
+    - nmbd.service
+    - rc-local.service
+    - rescue.service
+    - samba-ad-dc.service
+    - systemd-ask-password-console.path
+    - systemd-ask-password-console.service
+    - systemd-ask-password-wall.path
+    - systemd-ask-password-wall.service
+    - systemd-initctl.service
+    - systemd-initctl.socket
+    - systemd-resolved.service
+    - systemd-rfkill.service
+    - systemd-rfkill.socket
+    - unbound-resolvconf.service

@@ -1,0 +1,4 @@
+---
+
+- name: Initialize the system
+  import_tasks: init.yml

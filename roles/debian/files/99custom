@@ -1,0 +1,9 @@
+APT::Install-Recommends "false";
+APT::Install-Suggests "false";
+APT::AutoRemove::Recommends-Important "false";
+APT::AutoRemove::Suggests-Important "false";
+Acquire::AllowDowngradeToInsecureRepositories "false";
+Acquire::AllowInsecureRepositories "false";
+Acquire::http::AllowRedirect "false";
+APT::Sandbox::Seccomp "true";
+#Acquire::tor::proxy "socks5h://apt:apt@100.114.163.58:9050";

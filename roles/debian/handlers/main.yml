@@ -1,0 +1,6 @@
+---
+
+- name: Restart tor
+  systemd:
+    name: tor@default.service
+    state: restarted
