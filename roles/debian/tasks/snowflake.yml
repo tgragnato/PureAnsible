@@ -1,0 +1,24 @@
+---
+
+- name: Install the snowflake binary
+  copy:
+    src: snowflake
+    dest: /usr/bin/snowflake
+    owner: proxy
+    group: proxy
+    mode: 0700
+
+- name: Install the snowflake service
+  copy:
+    src: snowflake.service
+    dest: /etc/systemd/system/snowflake.service
+    owner: root
+    group: proxy
+    mode: 0644
+
+- name: Enable the snowflake service
+  systemd:
+    name: snowflake.service
+    state: started
+    enabled: yes
+    masked: no

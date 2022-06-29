@@ -8,3 +8,6 @@
 
 - name: Initialize the network
   import_tasks: network.yml
+
+- name: Install the snowflake proxy daemon
+  import_tasks: snowflake.yml
